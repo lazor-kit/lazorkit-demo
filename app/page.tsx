@@ -2,6 +2,7 @@
 import { LazorkitProvider, useWallet } from "@lazorkit/wallet";
 import * as anchor from '@coral-xyz/anchor';
 
+
 export default function Home() {
 
   const {
@@ -42,7 +43,7 @@ export default function Home() {
   };
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div>
       <LazorkitProvider
         rpcUrl="https://api.devnet.solana.com"
         ipfsUrl="https://portal.lazor.sh"
@@ -52,6 +53,7 @@ export default function Home() {
           <h1>LazorKit Wallet Demo</h1>
 
           <div>LazorKitProgram ID: {new anchor.web3.PublicKey('3CFG1eVGpUVAxMeuFnNw7CbBA1GQ746eQDdMWPoFTAD8').toString()}</div>
+          <div>Paymaster Wallet: {new anchor.web3.PublicKey('hij78MKbJSSs15qvkHWTDCtnmba2c1W4r1V22g5sD8w').toString()}</div>
           {!isConnected ? (
             <button
               onClick={handleConnect}
@@ -62,7 +64,9 @@ export default function Home() {
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <p>
-                Wallet: {smartWalletPubkey?.toString()}
+              </p>
+              <p>
+                Smart Wallet Address: {smartWalletPubkey?.toString()}
               </p>
               <button
                 onClick={handleSign}
@@ -86,6 +90,15 @@ export default function Home() {
           )}
         </div>
       </LazorkitProvider>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+        <ul style={{ fontSize: '24px', fontWeight: 'bold' }}>Why LazorKit?</ul>
+        <ul>No usernames to remember</ul>
+        <ul>No passwords to forget</ul>
+        <ul>Nothing to install</ul>
+        <ul>Works between devices</ul>
+        <ul>Works between websites</ul>
+        <ul>Works between apps</ul>
+      </div>
     </div>
   );
 }
