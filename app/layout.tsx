@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LazorKit Wallet Demo",
-  description: "LazorKit Wallet Demo",
+  title: "1 - LazorKit Wallet Demo",
+  description: "LazorKit Wallet Demo 1",
 };
 
 export default function RootLayout({
