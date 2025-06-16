@@ -1,9 +1,15 @@
 "use client";
 import { LazorkitProvider, useWallet } from "@lazorkit/wallet";
+import { Connection, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
+import { useEffect, useState } from "react";
+
 import * as anchor from '@coral-xyz/anchor';
 
-
 export default function Home() {
+
+  const [balance, setBalance] = useState(0);
+
+  const connection = new Connection(process.env.NEXT_PUBLIC_SOLANA_RPC_URL!);
 
   const {
     smartWalletPubkey,
@@ -23,6 +29,14 @@ export default function Home() {
       console.error('Connection failed:', error);
     }
   };
+
+  useEffect(() => {
+    const getBalance = async () => {
+      const balance = await connection.getBalance(new PublicKey(smartWalletPubkey!));
+      setBalance(balance);
+    }
+    getBalance();
+  }, [smartWalletPubkey]);
 
   const handleSign = async () => {
     if (!smartWalletPubkey) return;
@@ -64,6 +78,7 @@ export default function Home() {
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <p>
+                Balance: {balance / LAMPORTS_PER_SOL}
               </p>
               <p>
                 Smart Wallet Address: {smartWalletPubkey?.toString()}
