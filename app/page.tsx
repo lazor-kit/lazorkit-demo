@@ -50,7 +50,7 @@ export default function Home() {
         paymasterUrl="https://lazorkit-paymaster.onrender.com"
       >
         <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <h1>LazorKit Wallet Demo</h1>
+          <h1>LazorKit Wallet Demo 1</h1>
 
           <div>LazorKitProgram ID: {new anchor.web3.PublicKey('3CFG1eVGpUVAxMeuFnNw7CbBA1GQ746eQDdMWPoFTAD8').toString()}</div>
           <div>Paymaster Wallet: {new anchor.web3.PublicKey('hij78MKbJSSs15qvkHWTDCtnmba2c1W4r1V22g5sD8w').toString()}</div>
